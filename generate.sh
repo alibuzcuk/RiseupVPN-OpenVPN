@@ -19,7 +19,7 @@ OVPN_CONF=riseup-ovpn.conf
 IPV6_DISABLED=false
 if [ ! $(ip a | grep inet6 >/dev/null) ]; then
     echo -e "\e[33;3mIPv6 appears to be disabled on your host; the generated configuration will not include IPv6 anti-leak protection.\e[0m"
-    IPV6_DISABLED=true
+    IPV6_DISABLED=false
 fi
 
 echo "Please wait, riseup API can be very slow..."
@@ -43,8 +43,8 @@ pull-filter ignore "tun-ipv6"
 pull-filter ignore "route-ipv6"
 pull-filter ignore "ifconfig-ipv6"
 pull-filter ignore "redirect-gateway"
-block-ipv6
 redirect-gateway def1' >>$OVPN_CONF
+block-ipv6
 fi
 
 # Get the VPN IP list, and add them to openvpn conf
