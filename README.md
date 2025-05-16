@@ -2,6 +2,8 @@
 
 Simple Bash script that generates an OpenVPN configuration file for use with [RiseupVPN](https://riseup.net/en/vpn)
 
+
+Added IPv6 @alixbuzcuk
 ## Usage
 
 ```bash
